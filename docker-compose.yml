@@ -1,0 +1,8 @@
+services:
+  abaplint:
+    image: node:20-alpine
+    working_dir: /repo
+    network_mode: bridge
+    volumes:
+      - ./:/repo
+    command: sh -c "apk add --no-cache git >/dev/null && npx --yes @abaplint/cli@2 abaplint.json"
